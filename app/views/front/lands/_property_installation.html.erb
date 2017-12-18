@@ -1,0 +1,41 @@
+<section>
+  <div class="section-title">
+    <%= t('front.lands.property_installation.title') %>
+  </div>
+  <table class="detailed-info__table column2">
+    <tbody>
+    <tr>
+      <th><%= t('front.lands.property_installation.installations.title') %></th>
+      <td>
+        <div class="detailed-info__installations-boxes">
+          <div class="detailed-info__installations-box--<%= @land.corner %>">
+            <%= t('front.lands.property_installation.installations.corner') %>
+          </div>
+          <div class="detailed-info__installations-box--<%= @land.low_rise_residential_area %>">
+            <%= t('front.lands.property_installation.installations.low_rise_residential_area') %>
+          </div>
+          <div class="detailed-info__installations-box--<%= @land.no_condition %>">
+            <%= t('front.lands.property_installation.installations.no_condition') %>
+          </div>
+          <div class="detailed-info__installations-box--<%= @land.ownership_or_not %>">
+            <%= t('front.lands.property_installation.installations.ownership_or_not') %>
+          </div>
+        </div>
+
+      </td>
+    </tr>
+    <tr>
+      <th><%= t('front.lands.property_installation.service') %></th>
+      <td><%= @land.services %></td>
+    </tr>
+    <tr>
+      <th><%= t('front.lands.property_installation.etc') %></th>
+      <td><%= @land.etc %></td>
+    </tr>
+    <tr>
+      <th><%= t('front.lands.property_installation.remarks') %></th>
+      <td><%= @land.remarks %></td>
+    </tr>
+    </tbody>
+  </table>
+</section>

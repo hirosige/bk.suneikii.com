@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @land_option.name
+
+= link_to 'Edit', edit_land_option_path(@land_option)
+'|
+= link_to 'Back', land_options_path

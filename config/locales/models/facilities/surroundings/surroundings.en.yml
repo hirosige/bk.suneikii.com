@@ -1,0 +1,21 @@
+en:
+  admin:
+    surroundings:
+      title:                 "Surroundings"
+      detail_page_title:     "Surroundings Detail"
+      modify_page_title:     "Surroundings Add/Modify"
+      description:           ""
+      items:
+        name:                "Surroundings Name"
+        latitude:            "Latitude"
+        longitude:           "Longitude"
+        photo:               "Photo"
+        uploaded_photo:      "Uploaded Photo"
+        created_at:          "Created at"
+        updated_at:          "Updated at"
+        controls:            "Controls"
+      buttons:
+        search:              "Search"
+        add:                 "Add Surroundings"
+        exec:                "Add/Modify"
+        csv_export:          "Export Surroundings"

@@ -1,0 +1,111 @@
+<header>
+  <div class="list-header">
+    <div class="list-header--left">
+      <div class="logo" style="display: flex">
+        <%= Settings.site[:name].split(' ')[0] %> <%= Settings.site[:name].split(' ')[1] %>
+      </div>
+    </div><br>
+
+    <div class="list-header--right">
+      <div class="dropdown">
+        <button class="btn btn-sm btn-primary dropdown-toggle" style="margin-right: 10px;" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <%= t('front.header.lang.caption') %>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li class="dropdown-header">Languages</li>
+          <li role="separator" class="divider"></li>
+          <% I18n.available_locales.reject{|l| l == I18n.locale}.each do |locale| %>
+            <li><%= link_to(locale, i18n_url_for(params.merge(locale: locale))) %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <%= cell("front/mobile/sessions/sign_in", current_user).(:sign_in_btn) %>
+    </div>
+  </div>
+
+  <div class="control-box">
+
+    <div class="control-box--left">
+      <%= image_tag("snk_logo.jpg", :style => 'width: 50px;', :alt => 'logo') %>
+      <span class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Select Kind
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li class="dropdown-header">Properties</li>
+          <li role="separator" class="divider"></li>
+          <li><a href="<%= apartment_province_list_path %>"><i class="fa fa-building"></i><%= t('front.apartments.title') %></a></li>
+          <li><a href="<%= land_province_list_path %>"><i class="fa fa-plus-square-o"></i><%= t('front.lands.title') %></a></li>
+          <li><a href="<%= condo_province_list_path %>"><i class="fa fa-plus-square-o"></i><%= t('front.condos.title') %></a></li>
+        </ul>
+      </span>
+    </div>
+
+    <a href="<%= user_visited_path %>" class="control-box__login-info">
+      <p><i class="fa fa-search control-box__icon"></i>
+        <%= @count %>
+      </p>
+    </a>
+
+    <% if user_signed_in? %>
+        <a href="<%= favorites_path %>" class="control-box__login-info">
+          <p><i class="fa fa-save control-box__icon"></i>
+            <% if current_user.favorites.nil? %>
+                <%= 0 %>
+            <% else %>
+                <%= current_user.favorites.size %>
+            <% end %>
+          </p>
+        </a>
+    <% end %>
+
+  </div>
+
+</header>
+
+<%= render "layouts/partials/awesome_debugger" %>
+
+<% module_name = params[:controller].split('/')[0] %>
+<% unless params[:action] == 'render_404' or module_name == 'admin' %>
+    <div class="header-info">
+      <div class="container">
+        <% no_info_controllers = Array.new %>
+        <% no_info_controllers.push(
+               'registrations',
+               'sessions',
+               'confirmations',
+               'passwords',
+               'omniauth_callbacks',
+               'favorites',
+               'users'
+           )
+        %>
+        <% unless no_info_controllers.include?(controller.controller_name) %>
+            <% if params[:province].nil? %>
+                <%= t('front.header.category.caption', :name => params[:controller].split('/')[1].capitalize) %>
+            <% else %>
+                <%= t('front.header.category.breadcrumb',
+                      :category => params[:controller].split('/')[1].capitalize,
+                      :province => @params_service.visualize(params[:province])
+                    )
+                %>
+            <% end %>
+
+            <%= t('front.header.sub_description') %>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+
+<div class="breadcrumb">
+  <div class="container">
+    <%= render_breadcrumbs separator: ' ▶ ' %>
+  </div>
+</div>
+
+<div id="notification" class="general__notification">
+
+</div>

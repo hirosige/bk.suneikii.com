@@ -1,0 +1,1 @@
+json.array! @land_options, partial: 'land_options/land_option', as: :land_option

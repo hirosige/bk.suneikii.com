@@ -1,0 +1,17 @@
+en:
+  admin:
+    apartment_options:
+      title:                 "Apartment Options"
+      detail_page_title:     "Apartment Options Detail"
+      modify_page_title:     "Apartment Options Add/Modify"
+      description:           ""
+      items:
+        name:                "Apartment Option Name"
+        created_at:          "Created at"
+        updated_at:          "Updated at"
+        controls:            "Controls"
+      buttons:
+        search:              "Search"
+        add:                 "Add Apartment Option"
+        exec:                "Add/Modify"
+        csv_export:          "Export Apartment Options"

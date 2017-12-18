@@ -1,0 +1,31 @@
+<section>
+  <div class="section-title">
+    <%= t('front.lands.property_detail.title') %>
+  </div>
+  <table class="detailed-info__table">
+    <tbody>
+    <tr>
+      <th><%= t('front.lands.property_detail.contract_span') %></th>
+      <td><%= @land.contact_span %></td>
+      <th><%= t('front.lands.property_detail.update_fee') %></th>
+      <td><%= @land.delimited_update_fee %></td>
+    </tr>
+    <tr>
+      <th><%= t('front.lands.property_detail.surety_company') %></th>
+      <td> - </td>
+    </tr>
+    <tr>
+      <th><%= t('front.lands.property_detail.status') %></th>
+      <td><%= @land.property_status %></td>
+      <th><%= t('front.lands.property_detail.availability') %></th>
+      <td><%= @land.availability %></td>
+    </tr>
+    <tr>
+      <th><%= t('front.lands.property_detail.property_id') %></th>
+      <td><%= @land.management_id %></td>
+      <th><%= t('front.lands.property_detail.deal_way') %></th>
+      <td><%= @land.deal_way %></td>
+    </tr>
+    </tbody>
+  </table>
+</section>
